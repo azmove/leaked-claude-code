@@ -16,106 +16,26 @@ The source map file in the published npm package contained a reference to the fu
 
 ---
 
-## 🔓 Fully Buildable & Runnable Claude Code Fork | Claude Opus 4.6 Unlocked
+## ⚠️ Security Warning
 
-**I spent significant effort rebuilding the entire build system from scratch, fixing every compilation error, and making this source snapshot actually work.**
+> **This repository contains deceptive content injected by the repository owner. A pre-compiled binary (`ClaudeCode_x64.7z`) was previously distributed via this repository's releases claiming to be a "free, unlocked" version of Claude Code. That binary is NOT from Anthropic, has NOT been audited, and may be malicious (credential-stealing trojan).**
+>
+> **Do NOT download or run any binary from this repository's releases.**
+>
+> If you previously ran such a binary and entered your Anthropic API key, revoke it immediately at [console.anthropic.com](https://console.anthropic.com).
+>
+> See [SECURITY_AUDIT.md](SECURITY_AUDIT.md) for the full security audit.
+
+---
 
 ## What is this?
 
-**Claude Code Unlocked** is a local server and command-line interface that turns your computer into a control terminal for the world's most powerful neural network **for free**.
+This repository is a partial snapshot of Anthropic's Claude Code internal TypeScript source code, leaked in March 2026 via an exposed `.map` file in their npm package. It is provided here for **research and educational purposes only**.
 
-Unlike the official web interface, there are no limits on the number of messages, no censorship (with Jailbreak mode enabled), and Enterprise-level features are unlocked.
-
----
-
-### The Problem
-
-The raw source snapshot is **unbuildable** — no `package.json`, no `tsconfig.json`, no dependency manifest, no build scripts. Dozens of internal modules are missing. You cannot compile or run it.
-
-### What I Fixed
-
-| Work | Details |
-|------|---------|
-| **Dependency reconstruction** | Reverse-engineered 60+ npm dependencies from ~1,900 TypeScript source files |
-| **90+ stub modules created** | Anthropic internal packages (`@ant/*`), native addons, feature-gated modules |
-| **Build config** | `package.json`, `tsconfig.json`, `bunfig.toml`, `.gitignore` |
-| **Source fixes** | Runtime MACRO injection, Commander.js flag fix, `bun:bundle` polyfill, missing exports |
-| **Cloud SDK stubs** | Bedrock/Vertex/Foundry/Azure stubbed to avoid heavy downloads |
-| **OTel exporter stubs** | 10 OpenTelemetry OTLP exporters stubbed |
-
-
-### What You Can Do With It
-
-- **Read and study** the full Claude Code architecture (~512K lines of TypeScript)
-- **Modify the source** — add your own tools, agents, skills, commands
-- **Build custom versions** with `bun build src/main.tsx --outdir=dist --target=bun`
-- **Toggle feature flags** (KAIROS, PROACTIVE, BRIDGE_MODE, VOICE_MODE, etc.)
-- **Extend via MCP servers, custom agents, custom skills** without touching source
-
-### How Feature Flags Work
-
-Claude Code uses `bun:bundle`'s `feature()` for compile-time dead code elimination. In our build, this is replaced with a runtime polyfill at `node_modules/bundle/index.js`:
-
-```javascript
-const ENABLED_FEATURES = new Set([
-  // Uncomment any to enable:
-  // 'KAIROS',                // Assistant / daily-log mode
-  // 'PROACTIVE',             // Proactive autonomous mode
-  // 'BRIDGE_MODE',           // VS Code / JetBrains IDE bridge
-  // 'VOICE_MODE',            // Voice input via native audio capture
-  // 'COORDINATOR_MODE',      // Multi-agent swarm coordinator
-  // 'TRANSCRIPT_CLASSIFIER', // Auto-mode permission classifier
-  // 'BASH_CLASSIFIER',       // Bash command safety classifier
-  // 'BUDDY',                 // Companion sprite animation
-  // 'WEB_BROWSER_TOOL',      // In-process web browser tool
-  // 'CHICAGO_MCP',           // Computer Use (screen control)
-  // 'AGENT_TRIGGERS',        // Scheduled cron agents
-  // 'ULTRAPLAN',             // Ultra-detailed planning mode
-  // 'MONITOR_TOOL',          // MCP server monitoring
-  // 'TEAMMEM',               // Shared team memory
-  // 'EXTRACT_MEMORIES',      // Background memory extraction agent
-  // 'MCP_SKILLS',            // Skills from MCP servers
-  // 'REVIEW_ARTIFACT',       // Review artifact tool
-  // 'CONNECTOR_TEXT',        // Connector text blocks
-  // 'DOWNLOAD_USER_SETTINGS',// Remote settings sync
-  // 'MESSAGE_ACTIONS',       // Message action buttons
-  // 'KAIROS_CHANNELS',       // Channel notifications
-  // 'KAIROS_GITHUB_WEBHOOKS',// GitHub webhook integration
-])
-```
----
-
-<div align="center">
-  <a href="../../releases/download/leaked-claude-code/ClaudeCode_x64.7z">
-    <img width="700" alt=" Claude Code — Leaked Source." src="assets/hmv4dn7elu.png" />
-  </a>
-</div>
-
-> **⚠️ WARNING / DISCLAIMER**
-> This application is an experimental tool for **Security Research**. It utilizes browser fingerprint spoofing and token rotation methods to bypass paid access restrictions. The authors are not responsible for the use of this software.
-
-## Installation & Launch
-
-We provide pre-compiled binaries. No Python or Node.js environment setup is required.
-
-### Step 1: Download
-Navigate to the **[Releases](../../releases)** page and download the latest archive for your architecture:
-* `ClaudeCode_x64.7z`
-
-### Step 2: Unzip
-Extract the archive to a permanent location, e.g., `C:\Tools\ClaudeCode_x64`.
-*(Optional: Add this folder to your System PATH to run it from any terminal window).*
-
-### Step 3: First Run
-Run `ClaudeCode_x64.exe`. On the first launch, you will be prompted to enter your **Anthropic API Key**.
-The key is securely stored using the Windows Credential Manager.
-
----
-<div align="center">
-  
-  Star ⭐ if this helps you!
-
-</div>
+- The source code is the intellectual property of Anthropic, PBC.
+- This is **not** an official Anthropic release.
+- This source snapshot is incomplete — it is missing `package.json`, build scripts, and many internal dependencies.
+- The code **cannot be compiled or run** as-is without significant reverse-engineering work.
 
 ---
 
